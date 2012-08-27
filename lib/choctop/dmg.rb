@@ -204,7 +204,7 @@ module ChocTop
     
     def add_file_to_dmg_src_folder(path, options)
       target = File.join(tmp_dmg_src_folder, options[:name])
-      sh ::Escape.shell_command(['cp', '-r', path, target])
+      sh ::Escape.shell_command(['cp', '-R', path, target])
       if options[:exclude]
         exclude_list = options[:exclude].is_a?(Array) ? options[:exclude] : [options[:exclude].to_s]
         exclude_list.each { |exclude| sh ::Escape.shell_command(['rm', '-rf', File.join(target, exclude)]) }
