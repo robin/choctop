@@ -123,6 +123,7 @@ module ChocTop
 
     def dsa_signature
       @dsa_signature ||= `openssl dgst -sha1 -binary < "#{pkg}" | openssl dgst -dss1 -sign "#{private_key}" | openssl enc -base64`
+      @dsa_signature.strip
     end
   end
 end
